@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BonWarung by MZW Digital</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c96b00">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="BonWarung">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#f6f2eb;--card:#fffdfa;--line:#ddd4c7;--text:#221d17;--muted:#756d63;--pri:#c96b00;--pri2:#a55600;--ok:#2c7a2c;--okbg:#ddf2dc;--bl:#1f64d8;--blbg:#deebff;--or:#c57509;--orbg:#fde8c8;--er:#bf2338;--erbg:#ffdfe5;--radius:16px;--shadow:0 10px 22px rgba(20,20,20,.08)}
+*{box-sizing:border-box} html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit;color:inherit} img{max-width:100%;display:block} button{cursor:pointer}
+.hidden{display:none!important}
+.top{position:sticky;top:0;background:#faf7f0e6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:20}
+.topin{max-width:940px;margin:auto;padding:.82rem 1rem;display:flex;gap:.75rem;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:.72rem;align-items:center;min-width:0}.logo{width:42px;height:42px;border-radius:13px;background:var(--pri);display:grid;place-items:center;color:#fff;flex:0 0 auto}.t1{font-weight:800;font-size:1.04rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.t2{font-size:.8rem;color:var(--muted)}
+.wrap{max-width:940px;margin:auto;padding:1rem 1rem 5rem}.note,.card,.sheet,.input,.sel,.fg input,.fg select,.fg textarea,.tbl,.photo-box,.lock-card{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
+.note{padding:.9rem 1rem;margin-bottom:1rem}.note strong{display:block;margin-bottom:.3rem}.mini{font-size:.84rem;color:var(--muted)} .small{font-size:.76rem;color:var(--muted)}
+.actions{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:1rem}.btn{border:none;border-radius:12px;padding:.78rem 1rem;font-weight:700;min-height:44px}.bp{background:var(--pri);color:#fff}.bp:hover{background:var(--pri2)}.bg{background:var(--card);border:1px solid var(--line)}.bd{background:var(--erbg);border:1px solid color-mix(in srgb,var(--er) 22%,transparent);color:var(--er)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1rem}.stat{padding:.85rem}.sl{font-size:.75rem;font-weight:700;color:var(--muted)}.sv{margin-top:.18rem;font-size:1.05rem;font-weight:800}
+.bar{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}.search{flex:1;min-width:180px}.input,.sel{width:100%;padding:.76rem .84rem;border:1px solid var(--line)}
+.list{display:grid;gap:.72rem}.item{overflow:hidden}.itembtn{all:unset;display:block;cursor:pointer;width:100%}.itemin{display:grid;grid-template-columns:84px 1fr;gap:.85rem;padding:.82rem}.ph{width:84px;height:84px;border-radius:13px;background:#ece5da;overflow:hidden;display:grid;place-items:center;font-size:2rem;color:#8c877d}.ph img{width:100%;height:100%;object-fit:cover}.nm{font-weight:800;font-size:1rem}.meta{display:flex;gap:.4rem;flex-wrap:wrap;margin:.15rem 0 .35rem}.pill{padding:.16rem .45rem;border-radius:999px;font-size:.7rem;font-weight:800}.pk{background:#f7e2cf;color:var(--pri)}.sg{background:var(--okbg);color:var(--ok)}.sb{background:var(--blbg);color:var(--bl)}.so{background:var(--orbg);color:var(--or)}.sr{background:var(--erbg);color:var(--er)}.last{font-size:.8rem;color:var(--muted);margin-bottom:.45rem}.prog{display:flex;gap:.55rem;align-items:center}.track{height:8px;background:#ece7df;border-radius:999px;overflow:hidden;flex:1}.fill{height:100%;border-radius:999px}.amt{font-size:.78rem;font-weight:800}.cg{border-color:color-mix(in srgb,var(--ok) 34%, var(--line))}.cb{border-color:color-mix(in srgb,var(--bl) 34%, var(--line))}.co{border-color:color-mix(in srgb,var(--or) 34%, var(--line))}.cr{border-color:color-mix(in srgb,var(--er) 34%, var(--line))}.empty{padding:2.4rem 1rem;text-align:center;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.46);display:none;align-items:flex-end;justify-content:center;z-index:55}.modal.open{display:flex}.sheet{width:100%;max-width:760px;max-height:92dvh;overflow:auto;padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));border-radius:18px 18px 0 0}.handle{width:42px;height:4px;border-radius:999px;background:var(--line);margin:0 auto .9rem}.mh{font-size:1.12rem;font-weight:800;margin-bottom:.85rem}.form{display:grid;gap:.82rem}.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}.fg label{display:block;font-size:.8rem;font-weight:700;margin-bottom:.28rem}.fg input,.fg select,.fg textarea{width:100%;padding:.76rem .84rem;border:1px solid var(--line)}.fg textarea{min-height:110px;resize:vertical}
+.sec{padding:.9rem;border:1px solid var(--line);border-radius:14px;background:#fffdf8}.sec h3{margin:.05rem 0 .65rem;font-size:.95rem}
+.photo-row{display:flex;gap:.6rem}.photo-half{flex:1}.photo-box{padding:.85rem;text-align:center}.photo-btn{width:100%;justify-content:center}.hint{font-size:.78rem;color:var(--muted)}.preview{width:116px;height:116px;border-radius:14px;object-fit:cover;margin:.6rem auto 0;background:#ede6dc}
+.detailhead{display:grid;grid-template-columns:92px 1fr;gap:.82rem;margin-bottom:.95rem}.bigph{width:92px;height:92px;border-radius:14px;background:#e9e3db;overflow:hidden;display:grid;place-items:center;font-size:2.2rem;color:#8f8a82}.bigph img{width:100%;height:100%;object-fit:cover}.limit{padding:.85rem;margin-bottom:.9rem}.limitline{display:flex;justify-content:space-between;gap:.5rem;font-size:.82rem;margin-bottom:.42rem}.tbl{width:100%;border-collapse:collapse;overflow:hidden}.tbl th,.tbl td{padding:.52rem .56rem;border-bottom:1px solid var(--line);text-align:left;font-size:.78rem;background:#fff}.tbl th{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.tbl tr:last-child td{border-bottom:none}.tp{color:var(--er);font-weight:800}.tb{color:var(--ok);font-weight:800}.paybox{display:grid;grid-template-columns:1fr auto;gap:.55rem;margin:.9rem 0}
+.toast{position:fixed;top:.8rem;left:.8rem;right:.8rem;display:grid;place-items:center;pointer-events:none;z-index:70}.toast div{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:.72rem .95rem;border-radius:12px;font-weight:700}
+.pin-shell{min-height:100dvh;display:grid;place-items:center;padding:1rem;background:linear-gradient(180deg,#f8f1e3,#f3eee7)}.lock-card{width:min(430px,100%);padding:1.1rem}.pin-logo{width:56px;height:56px;border-radius:16px;background:var(--pri);display:grid;place-items:center;color:#fff;margin:0 auto .8rem}.pin-title{text-align:center;font-weight:800;font-size:1.1rem}.pin-sub{text-align:center;color:var(--muted);font-size:.83rem;margin:.25rem 0 1rem}.pin-dots{display:flex;justify-content:center;gap:.5rem;margin:.8rem 0 1rem}.dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--pri);background:#fff}.dot.on{background:var(--pri)}.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}.pin-key{border:1px solid var(--line);border-radius:14px;background:#fff;padding:1rem 0;font-weight:800;font-size:1.05rem}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.two,.detailhead,.paybox{grid-template-columns:1fr}.itemin{grid-template-columns:74px 1fr}.ph{width:74px;height:74px}.topin{padding-right:.8rem;padding-left:.8rem}.wrap{padding-left:.8rem;padding-right:.8rem}}
+
+.footer{text-align:center;padding:1.8rem 1rem 2.2rem;color:var(--muted);font-size:.78rem;font-weight:600;letter-spacing:.01em}
+.footer a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.footer a:hover,.footer a:active{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<div id="lockScreen" class="pin-shell hidden">
+  <div class="lock-card">
+    <div class="pin-logo">🔒</div>
+    <div class="pin-title">BonWarung by MZW Digital</div>
+    <div class="pin-sub" id="lockSub">Masukkan PIN untuk membuka aplikasi</div>
+    <div class="pin-dots"><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div><div class="dot" id="d4"></div><div class="dot hidden" id="d5"></div><div class="dot hidden" id="d6"></div></div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinTap('1')">1</button><button class="pin-key" onclick="pinTap('2')">2</button><button class="pin-key" onclick="pinTap('3')">3</button>
+      <button class="pin-key" onclick="pinTap('4')">4</button><button class="pin-key" onclick="pinTap('5')">5</button><button class="pin-key" onclick="pinTap('6')">6</button>
+      <button class="pin-key" onclick="pinTap('7')">7</button><button class="pin-key" onclick="pinTap('8')">8</button><button class="pin-key" onclick="pinTap('9')">9</button>
+      <button class="pin-key" onclick="pinClear()">←</button><button class="pin-key" onclick="pinTap('0')">0</button><button class="pin-key" onclick="toast('Reset PIN dari Pengaturan')">?</button>
+    </div>
+    <div class="small" style="margin-top:.8rem;text-align:center">Versi ini memakai PIN sederhana agar mudah dipakai.</div>
+  </div>
+</div>
+
+<div id="appShell" class="hidden">
+<header class="top"><div class="topin"><div class="brand"><div class="logo">📒</div><div><div class="t1">BonWarung by MZW Digital</div><div class="t2" id="shopTitle">Warung Saya</div></div></div></div></header>
+<div class="toast" id="toast"></div>
+<main class="wrap">
+  <div class="note"><strong>Data otomatis tersimpan di HP ini</strong><div class="mini">Gunakan menu Pengaturan untuk backup, import, keamanan, dan pengaturan kelas.</div></div>
+  <div class="actions">
+    <button class="btn bg" onclick="openSettings()">Pengaturan</button>
+    <button class="btn bg" onclick="shareSummary()">Bagikan</button>
+    <button class="btn bg" onclick="lockNow()">Kunci</button>
+    <button class="btn bp" onclick="openAdd()">+ Tambah Data</button>
+  </div>
+  <div class="stats">
+    <div class="card stat"><div class="sl">Total peminjam</div><div class="sv" id="s1">0</div></div>
+    <div class="card stat"><div class="sl">Belum lunas</div><div class="sv" id="s2">0</div></div>
+    <div class="card stat"><div class="sl">Aktivitas hari ini</div><div class="sv" id="s3">0</div></div>
+    <div class="card stat"><div class="sl">Total piutang</div><div class="sv" id="s4">Rp 0</div></div>
+  </div>
+  <div class="bar"><div class="search"><input class="input" id="q" placeholder="Cari nama..." oninput="render()"></div><div style="width:180px"><select class="sel" id="sortOrder" onchange="render()"><option value="terlama">Urut: Pinjaman terlama</option><option value="terbaru">Urut: Pinjaman terbaru</option><option value="jumlah">Urut: Jumlah terbesar</option><option value="nama">Sortir: Nama A-Z</option><option value="lunas">Urut: Lunas</option></select></div></div>
+  <div id="list" class="list"></div>
+  <div class="footer">BonWarung &nbsp;·&nbsp; by <a href="https://t.me/mzwdigital" target="_blank" rel="noopener">MZW Digital</a></div>
+</main>
+</div>
+
+<div class="modal" id="mForm"><div class="sheet"><div class="handle"></div><div class="mh" id="formTitle">Tambah Data</div><form class="form" id="formMain">
+<input type="file" accept="image/*" capture="environment" id="fotoCamera" hidden><input type="file" accept="image/*" id="fotoGallery" hidden>
+<div class="photo-row"><div class="photo-half"><div class="photo-box"><button type="button" class="btn bg photo-btn" onclick="pickCamera()">Kamera</button><div class="hint" style="margin-top:.45rem">Kamera langsung</div></div></div><div class="photo-half"><div class="photo-box"><button type="button" class="btn bg photo-btn" onclick="pickGallery()">Galeri</button><div class="hint" style="margin-top:.45rem">Ambil dari galeri</div></div></div></div>
+<img id="fotoPrev" class="preview hidden" alt="Preview foto">
+<div class="fg"><label>Nama peminjam</label><input id="nama" required placeholder="Nama lengkap..."></div>
+<div id="firstLoanBlock"><div class="two"><div class="fg"><label>Barang pinjaman</label><input id="barang" placeholder="Es, snack, dll"></div><div class="fg"><label>Harga</label><input id="harga" type="number" min="1" placeholder="2000"></div></div><div class="small">Pinjaman awal wajib diisi saat tambah data baru.</div></div><div class="fg"><label>Catatan <span class="small">(opsional)</span></label><textarea id="catatan" rows="2" placeholder="Contoh: pelanggan tetap, bayar mingguan..."></textarea></div>
+<div style="display:flex;gap:.55rem;flex-wrap:wrap"><button type="button" class="btn bg" onclick="closeModal('mForm')">Batal</button><button type="submit" class="btn bp">Simpan</button></div>
+</form></div></div>
+
+<div class="modal" id="mDetail"><div class="sheet" id="detailBody"></div></div>
+
+<div class="modal" id="mSettings"><div class="sheet"><div class="handle"></div><div class="mh">Pengaturan</div><form class="form" id="settingsForm">
+  <div class="sec"><h3>Umum</h3><div class="fg"><label>Nama warung / toko</label><input id="setShopName" placeholder="Warung Saya"></div></div>
+  <div class="sec"><h3>Keamanan</h3><div class="two"><div class="fg"><label>PIN aplikasi</label><input id="setPin" inputmode="numeric" maxlength="6" placeholder="4 atau 6 digit"></div><div class="fg"><label>Ulangi PIN</label><input id="setPin2" inputmode="numeric" maxlength="6" placeholder="Ulangi PIN"></div></div><div class="fg"><label>Aktifkan kunci PIN</label><select id="setLockEnabled"><option value="yes">Ya</option><option value="no">Tidak</option></select></div></div>
+  <div class="sec"><h3>Backup / Import</h3><div style="display:flex;gap:.55rem;flex-wrap:wrap"><button type="button" class="btn bg" onclick="downloadBackup()">Backup JSON</button><button type="button" class="btn bg" onclick="document.getElementById('importJson').click()">Import JSON</button><input id="importJson" type="file" accept="application/json" hidden></div><div class="small" style="margin-top:.55rem">Lakukan backup berkala agar data aman.</div></div>
+  <div class="sec"><h3>Custom</h3><div class="two"><div class="fg"><label>Warna utama</label><select id="setTheme"><option value="orange">Oranye hangat</option><option value="blue">Biru sekolah</option><option value="green">Hijau segar</option><option value="purple">Ungu lembut</option></select></div><div class="fg"><label>Limit hutang per anak</label><input id="setLimit" type="number" min="1000" step="500"></div></div></div>
+  <div style="display:flex;gap:.55rem;flex-wrap:wrap"><button type="button" class="btn bg" onclick="closeModal('mSettings')">Tutup</button><button type="submit" class="btn bp">Simpan Pengaturan</button></div>
+</form></div></div>
+
+<canvas id="cv" hidden></canvas>
+<script>
+const DB_NAME='BonWarungDB'; const STORE='appState'; const STATE_KEY='main';
+let state=null, rows=[], settings={}, security={}, currentPhoto=null, editingId=null, currentId=null, enteredPin='', unlocked=false;
+function defaultClasses(){return ['1A','1B','2A','2B','3A','3B','4A','4B','5A','5B','6A','6B','Lainnya']}
+function defaultSettings(){return {shopName:'Warung Saya',limit:5000,classes:defaultClasses(),theme:'orange'}}
+function defaultSecurity(){return {lockEnabled:false,pin:''}}
+function defaultState(){return {settings:defaultSettings(),security:defaultSecurity(),items:[],meta:{app:'BonWarung by MZW Digital',version:5,updatedAt:Date.now()}}}
+function toast(msg){const t=document.getElementById('toast');t.innerHTML='<div>'+msg+'</div>';setTimeout(()=>t.innerHTML='',2400)}
+function esc(s){return String(s??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function rp(n){return 'Rp '+Number(n||0).toLocaleString('id-ID')}
+function fmt(ts){const d=new Date(ts);const t=d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'2-digit'});return t+' · '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function sumDebt(p){return (p.trx||[]).reduce((s,t)=>s+(t.type==='loan'?t.amount:-t.amount),0)}
+function outstandingLots(p){const lots=[];for(const t of (p.trx||[]).sort((a,b)=>a.ts-b.ts)){if(t.type==='loan') lots.push({ts:t.ts,remain:t.amount}); else {let pay=t.amount; for(const lot of lots){if(pay<=0) break; const used=Math.min(pay,lot.remain); lot.remain-=used; pay-=used;}}}return lots.filter(x=>x.remain>0)}
+function oldestOutstandingTs(p){const lots=outstandingLots(p);return lots.length?Math.min(...lots.map(x=>x.ts)):Infinity}
+function statusOf(p){const debt=sumDebt(p);if(debt<=0) return {c:'cg',p:'sg',f:'var(--ok)',text:'Lunas'};const oldest=outstandingLots(p)[0];const days=Math.floor((Date.now()-oldest.ts)/86400000);if(days<3) return {c:'cb',p:'sb',f:'var(--bl)',text:days===0?'Hari ini':'1-2 hari'};if(days<6) return {c:'co',p:'so',f:'var(--or)',text:'3-5 hari'};return {c:'cr',p:'sr',f:'var(--er)',text:'6+ hari'}}
+function currentLimit(){return Math.max(1000,Number(settings.limit||5000))}
+function transactionsToday(){const start=new Date(); start.setHours(0,0,0,0); let n=0; for(const p of rows){for(const t of (p.trx||[])){if(t.ts>=start.getTime()) n++}} return n}
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=''}
+for(const id of ['mForm','mDetail','mSettings']) document.getElementById(id).onclick=e=>{if(e.target.id===id) closeModal(id)}
+async function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(STORE)) req.result.createObjectStore(STORE)};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+async function dbGet(key){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const req=tx.objectStore(STORE).get(key);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+async function dbSet(key,val){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(val,key);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}
+function normalizeImported(parsed){const base=defaultState(); const s=parsed.settings||{}; const sec=parsed.security||{}; const classesRaw=s.classes||parsed.classes||base.settings.classes; const classes=Array.isArray(classesRaw)?classesRaw.filter(Boolean):String(classesRaw||'').split(/[\n,]/).map(x=>x.trim()).filter(Boolean); return {settings:{shopName:s.shopName||base.settings.shopName,limit:Math.max(1000,Number(s.limit||base.settings.limit)),classes:classes.length?classes:base.settings.classes,theme:s.theme||base.settings.theme},security:{lockEnabled:!!sec.lockEnabled,pin:String(sec.pin||'')},items:Array.isArray(parsed.items)?parsed.items:[],meta:{app:'BonWarung by MZW Digital',version:5,updatedAt:Date.now()}}}
+async function loadState(){try{const saved=await dbGet(STATE_KEY); state=saved?normalizeImported(saved):defaultState(); settings=state.settings; security=state.security; rows=Array.isArray(state.items)?state.items:[];}catch(e){console.error(e); state=defaultState(); settings=state.settings; security=state.security; rows=[];} syncSettingsUI(); populateClassSelects(); applyBrand(); render(); initLock()}
+async function saveState(){state={settings,security,items:rows,meta:{app:'BonWarung by MZW Digital',version:5,updatedAt:Date.now()}}; await dbSet(STATE_KEY,state)}
+async function persist(msg='Tersimpan otomatis'){await saveState();applyBrand();render(); if(msg) toast(msg)}
+function applyTheme(){const m={orange:['#c96b00','#a55600'],blue:['#2265d8','#184ba1'],green:['#2e8b57','#20633d'],purple:['#8257d7','#6240ab']}[settings.theme||'orange']; document.documentElement.style.setProperty('--pri',m[0]); document.documentElement.style.setProperty('--pri2',m[1])}
+function applyBrand(){applyTheme(); document.title='BonWarung by MZW Digital'; document.getElementById('shopTitle').textContent=settings.shopName||'Warung Saya'; document.getElementById('lockSub').textContent='Masukkan PIN untuk membuka '+(settings.shopName||'aplikasi')}
+function populateClassSelects(){}
+function syncSettingsUI(){document.getElementById('setShopName').value=settings.shopName||''; document.getElementById('setLimit').value=currentLimit(); document.getElementById('setTheme').value=settings.theme||'orange'; document.getElementById('setPin').value=''; document.getElementById('setPin2').value=''; document.getElementById('setLockEnabled').value=security.lockEnabled?'yes':'no'}
+function filtered(){const q=document.getElementById('q').value.toLowerCase().trim();const sort=(document.getElementById('sortOrder')||{}).value||'terlama';let list=rows.filter(r=>!q||r.name.toLowerCase().includes(q));list.sort((a,b)=>{if(sort==='nama') return a.name.localeCompare(b.name,'id');if(sort==='terlama'){const da=sumDebt(a), db=sumDebt(b);if(da>0&&db>0) return oldestOutstandingTs(a)-oldestOutstandingTs(b);if(da>0&&db<=0) return -1;if(da<=0&&db>0) return 1;return a.createdAt-b.createdAt}if(sort==='terbaru'){const ta=(a.trx&&a.trx.length)?Math.max(...a.trx.map(t=>t.ts)):a.createdAt;const tb=(b.trx&&b.trx.length)?Math.max(...b.trx.map(t=>t.ts)):b.createdAt;return tb-ta}if(sort==='jumlah') return sumDebt(b)-sumDebt(a);if(sort==='lunas'){const da=sumDebt(a), db=sumDebt(b);if(da<=0&&db>0) return -1;if(da>0&&db<=0) return 1;const ta=(a.trx&&a.trx.length)?Math.max(...a.trx.map(t=>t.ts)):a.createdAt;const tb=(b.trx&&b.trx.length)?Math.max(...b.trx.map(t=>t.ts)):b.createdAt;return tb-ta}const da=sumDebt(a), db=sumDebt(b);if(da>0&&db>0) return oldestOutstandingTs(a)-oldestOutstandingTs(b);if(da>0&&db<=0) return -1;if(da<=0&&db>0) return 1;return a.createdAt-b.createdAt}); return list}
+function render(){applyBrand(); document.getElementById('s1').textContent=rows.length; document.getElementById('s2').textContent=rows.filter(x=>sumDebt(x)>0).length; document.getElementById('s3').textContent=transactionsToday(); document.getElementById('s4').textContent=rp(rows.reduce((s,x)=>s+Math.max(0,sumDebt(x)),0)); const list=document.getElementById('list'); const items=filtered(); if(!rows.length){list.innerHTML='<div class="card empty">Belum ada data. Tekan + Tambah Data. Data akan tersimpan otomatis.</div>'; return} if(!items.length){list.innerHTML='<div class="card empty">Data tidak ditemukan.</div>'; return} const limit=currentLimit(); list.innerHTML=items.map(p=>{const debt=sumDebt(p), pct=Math.min(100,Math.round(debt/limit*100)), st=statusOf(p); const last=[...(p.trx||[])].sort((a,b)=>b.ts-a.ts)[0]; const lastText=last?(last.type==='loan'?last.item:'Bayar')+' · '+rp(last.amount)+' · '+fmt(last.ts):'Belum ada transaksi'; return `<div class="card item ${st.c}"><button class="itembtn" onclick="openDetail('${p.id}')"><div class="itemin"><div class="ph">${p.photo?`<img src="${p.photo}" alt="${esc(p.name)}">`:'🙂'}</div><div><div class="nm">${esc(p.name)}</div><div class="meta"><span class="pill ${st.p}">${st.text}</span></div><div class="last">${esc(lastText)}</div><div class="prog"><div class="track"><div class="fill" style="width:${pct}%;background:${st.f}"></div></div><div class="amt" style="color:${st.f}">${debt>0?rp(debt):'Lunas'}</div></div></div></div></button></div>`}).join('')}
+function findDuplicate(name,ignoreId=''){return rows.find(x=>x.id!==ignoreId && x.name.trim().toLowerCase()===name.trim().toLowerCase())}
+function openAdd(){editingId=null; currentPhoto=null; document.getElementById('formTitle').textContent='Tambah Peminjam'; document.getElementById('formMain').reset(); const ct=document.getElementById('catatan'); if(ct) ct.value=''; document.getElementById('fotoPrev').classList.add('hidden'); document.getElementById('firstLoanBlock').style.display='block'; openModal('mForm')}
+function openEdit(id){const p=rows.find(x=>x.id===id); if(!p) return; editingId=id; currentPhoto=p.photo||null; document.getElementById('formTitle').textContent='Edit Peminjam'; document.getElementById('nama').value=p.name; const ct2=document.getElementById('catatan'); if(ct2) ct2.value=p.catatan||''; document.getElementById('barang').value=''; document.getElementById('harga').value=''; document.getElementById('firstLoanBlock').style.display='none'; const prev=document.getElementById('fotoPrev'); if(p.photo){prev.src=p.photo; prev.classList.remove('hidden')} else prev.classList.add('hidden'); openModal('mForm')}
+function openSettings(){syncSettingsUI(); openModal('mSettings')}
+function pickCamera(){document.getElementById('fotoCamera').click()} function pickGallery(){document.getElementById('fotoGallery').click()} function previewPhoto(data){const p=document.getElementById('fotoPrev'); p.src=data; p.classList.remove('hidden')}
+function compressImage(file){return new Promise((resolve,reject)=>{const fr=new FileReader(); fr.onload=e=>{const img=new Image(); img.onload=()=>{const max=480; let w=img.width,h=img.height; if(w>h&&w>max){h=Math.round(h*max/w); w=max}else if(h>=w&&h>max){w=Math.round(w*max/h); h=max} const cv=document.getElementById('cv'); cv.width=w; cv.height=h; cv.getContext('2d').drawImage(img,0,0,w,h); resolve(cv.toDataURL('image/jpeg',0.58))}; img.onerror=reject; img.src=e.target.result}; fr.onerror=reject; fr.readAsDataURL(file)})}
+async function handlePhotoInput(ev){const f=ev.target.files[0]; if(!f) return; currentPhoto=await compressImage(f); previewPhoto(currentPhoto); ev.target.value=''}
+document.getElementById('fotoCamera').addEventListener('change',handlePhotoInput); document.getElementById('fotoGallery').addEventListener('change',handlePhotoInput);
+document.getElementById('formMain').addEventListener('submit',async e=>{e.preventDefault(); try{const name=document.getElementById('nama').value.trim(); const item=document.getElementById('barang').value.trim(); const amount=Number(document.getElementById('harga').value||0); const catatan=(document.getElementById('catatan')?.value||'').trim(); const limit=currentLimit(); if(!name) return toast('Nama wajib diisi'); const dup=findDuplicate(name,editingId||''); if(dup && !confirm('Nama ini sudah ada. Lanjut simpan?')) return; if(editingId){const p=rows.find(x=>x.id===editingId); if(!p) return; p.name=name; p.catatan=catatan; p.photo=currentPhoto||null; await persist('Data diperbarui')} else {if(!item||amount<=0||amount>limit) return toast('Pinjaman awal wajib dan tidak boleh melebihi limit'); rows.push({id:uid(),name,catatan,photo:currentPhoto||null,createdAt:Date.now(),trx:[{id:uid(),type:'loan',item,amount,ts:Date.now()}]}); await persist('Data ditambah')} closeModal('mForm')}catch(err){console.error(err); toast('Gagal menyimpan')}})
+document.getElementById('settingsForm').addEventListener('submit',async e=>{e.preventDefault(); const p1=document.getElementById('setPin').value.trim(); const p2=document.getElementById('setPin2').value.trim(); const lockEnabled=document.getElementById('setLockEnabled').value==='yes'; if(lockEnabled){ if(!(p1.length===4||p1.length===6)||!/^[0-9]+$/.test(p1)) return toast('PIN harus 4 atau 6 digit'); if(p1!==p2) return toast('Ulangi PIN tidak sama'); security.pin=p1 } else if(p1||p2){ if(p1!==p2) return toast('Ulangi PIN tidak sama'); if(p1 && !/^[0-9]+$/.test(p1)) return toast('PIN hanya angka'); if(p1 && !(p1.length===4||p1.length===6)) return toast('PIN harus 4 atau 6 digit'); if(p1) security.pin=p1 } security.lockEnabled=lockEnabled; settings={...settings,shopName:document.getElementById('setShopName').value.trim()||settings.shopName,limit:Math.max(1000,Number(document.getElementById('setLimit').value||5000)),theme:document.getElementById('setTheme').value||'orange'}; populateClassSelects(); unlocked=!lockEnabled; await persist('Pengaturan disimpan'); closeModal('mSettings'); initLock()})
+function detailHtml(p){const debt=sumDebt(p), limit=currentLimit(), remain=Math.max(0,limit-debt), pct=Math.min(100,Math.round(debt/limit*100)), st=statusOf(p); const sorted=[...(p.trx||[])].sort((a,b)=>a.ts-b.ts); let run=0; const tr=sorted.map(t=>{run+=t.type==='loan'?t.amount:-t.amount; return `<tr><td>${fmt(t.ts)}</td><td>${t.type==='loan'?esc(t.item):'-'}</td><td class="${t.type==='loan'?'tp':'tb'}">${t.type==='loan'?'-':'+'}${rp(t.amount)}</td><td>${rp(Math.max(0,run))}</td></tr>`}).join(''); return `<div class="handle"></div><div class="mh">Detail peminjam</div><div class="detailhead"><div class="bigph">${p.photo?`<img src="${p.photo}" alt="${esc(p.name)}">`:'🙂'}</div><div><div class="nm">${esc(p.name)}</div><div class="meta"><span class="pill ${st.p}">${st.text}</span></div><div class="hint">Mulai tercatat: ${fmt(p.createdAt)}</div>${p.catatan?`<div class="small" style="margin-top:.3rem;color:#555">📝 ${esc(p.catatan)}</div>`:''}</div></div><div class="card limit"><div class="limitline"><span>Hutang: ${rp(debt)}</span><span>Sisa limit: ${rp(remain)}</span></div><div class="track"><div class="fill" style="width:${pct}%;background:${st.f}"></div></div></div><div class="paybox"><input id="payAmount" class="input" type="number" min="1" placeholder="Nominal bayar"><button class="btn bp" onclick="payDebt()">Bayar</button></div><div style="display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:.9rem"><button class="btn bp" onclick="addLoan()" ${remain<=0?'disabled':''}>Tambah pinjaman</button><button class="btn bg" onclick="openEdit('${p.id}')">Edit</button><button class="btn bd" onclick="removePerson('${p.id}')">Hapus</button></div><table class="tbl"><thead><tr><th>Tanggal</th><th>Barang</th><th>Jumlah</th><th>Sisa</th></tr></thead><tbody>${tr||'<tr><td colspan="4">Belum ada transaksi</td></tr>'}</tbody></table>`}
+function openDetail(id){currentId=id; const p=rows.find(x=>x.id===id); if(!p) return; document.getElementById('detailBody').innerHTML=detailHtml(p); openModal('mDetail')}
+async function payDebt(){try{const p=rows.find(x=>x.id===currentId); if(!p) return; const debt=sumDebt(p); const amount=Number(document.getElementById('payAmount').value||0); if(amount<=0||amount>debt) return toast('Nominal bayar tidak valid'); p.trx.push({id:uid(),type:'pay',item:'-',amount,ts:Date.now()}); await persist('Pembayaran disimpan'); openDetail(currentId)}catch(err){console.error(err); toast('Gagal menyimpan')}}
+async function addLoan(){try{const p=rows.find(x=>x.id===currentId); if(!p) return; const remain=Math.max(0,currentLimit()-sumDebt(p)); const item=prompt('Nama barang pinjaman'); if(!item) return; const amount=Number(prompt('Harga pinjaman, maks '+remain)||0); if(amount<=0||amount>remain) return toast('Melebihi sisa limit'); p.trx.push({id:uid(),type:'loan',item:item.trim(),amount,ts:Date.now()}); await persist('Pinjaman ditambahkan'); openDetail(currentId)}catch(err){console.error(err); toast('Gagal menyimpan')}}
+async function removePerson(id){try{if(!confirm('Hapus data ini?')) return; rows=rows.filter(x=>x.id!==id); currentId=null; closeModal('mDetail'); await saveState(); render(); toast('Data dihapus')}catch(err){console.error(err); toast('Gagal menyimpan')}}
+function buildSummaryText(){const total=rows.reduce((s,x)=>s+Math.max(0,sumDebt(x)),0); const unpaid=rows.filter(x=>sumDebt(x)>0).length; return `BonWarung by MZW Digital\n${settings.shopName||'Warung Saya'}\n\nTotal peminjam: ${rows.length}\nBelum lunas: ${unpaid}\nAktivitas hari ini: ${transactionsToday()}\nTotal piutang: ${rp(total)}`}
+function shareSummary(){const txt=buildSummaryText(); if(navigator.share){navigator.share({title:'BonWarung by MZW Digital',text:txt}).catch(()=>{window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')})} else {window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')} }
+function downloadBackup(){const data={settings,security,items:rows,meta:{app:'BonWarung by MZW Digital',version:5,updatedAt:Date.now()}}; const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='bonwarung-backup.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),500); toast('Backup JSON dibuat')}
+document.getElementById('importJson').addEventListener('change',async e=>{const f=e.target.files[0]; if(!f) return; try{if(!confirm('Import akan mengganti data yang ada di aplikasi ini. Lanjut?')) return; const parsed=JSON.parse(await f.text()); const n=normalizeImported(parsed); settings=n.settings; security=n.security; rows=n.items; syncSettingsUI(); populateClassSelects(); await persist('Import JSON berhasil'); initLock()}catch(err){console.error(err); toast('File JSON tidak valid')} finally {e.target.value=''}})
+function initLock(){enteredPin=''; updateDots(); const needLock=security.lockEnabled&&security.pin; if(!needLock){unlocked=true; document.getElementById('lockScreen').classList.add('hidden'); document.getElementById('appShell').classList.remove('hidden'); return} if(!unlocked){document.getElementById('lockScreen').classList.remove('hidden'); document.getElementById('appShell').classList.add('hidden')} togglePinDots()}
+function togglePinDots(){const len=(security.pin||'').length||4; ['d1','d2','d3','d4','d5','d6'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',i>=len))}
+function updateDots(){const len=(security.pin||'').length||4; ['d1','d2','d3','d4','d5','d6'].forEach((id,i)=>{document.getElementById(id).classList.toggle('hidden',i>=len); document.getElementById(id).classList.toggle('on',i<enteredPin.length)})}
+function pinTap(n){if(!(security.lockEnabled&&security.pin)) return; enteredPin+=n; updateDots(); if(enteredPin.length===security.pin.length){ if(enteredPin===security.pin){ unlocked=true; document.getElementById('lockScreen').classList.add('hidden'); document.getElementById('appShell').classList.remove('hidden'); toast('PIN benar') } else { enteredPin=''; updateDots(); toast('PIN salah') } }}
+function pinClear(){enteredPin=enteredPin.slice(0,-1); updateDots()}
+function lockNow(){if(!(security.lockEnabled&&security.pin)) return toast('PIN belum aktif'); unlocked=false; enteredPin=''; updateDots(); document.getElementById('lockScreen').classList.remove('hidden'); document.getElementById('appShell').classList.add('hidden');}
+loadState();
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./sw.js').then(r=>{
+      r.onupdatefound=()=>{
+        const w=r.installing;
+        w.onstatechange=()=>{if(w.state==='installed'&&navigator.serviceWorker.controller) console.log('Update tersedia');}
+      }
+    }).catch(e=>console.error('SW error:',e));
+  });
+}
+</script>
+</body>
+</html>
